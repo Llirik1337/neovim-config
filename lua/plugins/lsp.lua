@@ -1,10 +1,15 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 -- Sntup language servers.
 local lspconfig = require('lspconfig')
 local lspconfig_configs = require'lspconfig.configs'
 local lspconfig_util = require 'lspconfig.util'
 
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+}
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
 lspconfig.prismals.setup {}

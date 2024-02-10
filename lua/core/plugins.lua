@@ -39,17 +39,46 @@ require("lazy").setup({
         "williamboman/mason.nvim"
     },
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
-      dependencies = { 'nvim-lua/plenary.nvim' }
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    {'jose-elias-alvarez/null-ls.nvim'},
+    {   'jose-elias-alvarez/null-ls.nvim'},
     {   'windwp/nvim-autopairs',
         event = "InsertEnter"
     },
     {
         'windwp/nvim-ts-autotag'
     },
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
-
+    {   'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+    {
+        "hedyhli/outline.nvim",
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    { 'lewis6991/gitsigns.nvim' },
+    {
+        'numToStr/Comment.nvim',
+        lazy = false,
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        dependencies =  {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim"
+        },
+    },
+    {'akinsho/toggleterm.nvim', version = "*", config = true},
+    { 
+      "nvim-neotest/neotest",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        'nvim-neotest/neotest-jest',
+        "antoinemadec/FixCursorHold.nvim",
+        "nvim-treesitter/nvim-treesitter"
+      }
+    }
 })
 

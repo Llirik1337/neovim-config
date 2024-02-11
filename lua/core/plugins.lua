@@ -79,6 +79,10 @@ require("lazy").setup({
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter"
       }
+    },
+    {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
     }
 })
 

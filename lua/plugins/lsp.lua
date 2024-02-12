@@ -11,7 +11,9 @@ lspconfig.jsonls.setup {
   capabilities = capabilities,
 }
 lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
+lspconfig.tsserver.setup {
+    capabilities = capabilities
+}
 lspconfig.prismals.setup {}
 lspconfig.cssls.setup {
     capabilities = capabilities
@@ -29,7 +31,34 @@ lspconfig.rust_analyzer.setup {
     },
   },
 }
-lspconfig.volar.setup {}
+
+lspconfig.docker_compose_language_service.setup{}
+lspconfig.dockerls.setup{}
+local function get_typescript_server_path(root_dir)
+
+  -- local global_ts = '/home/llirik1337/.npm/lib/node_modules/typescript/lib'
+  local global_ts = '/home/llirik1337/.nvm/versions/node/v18.18.2/lib/node_modules/npm'
+  -- Alternative location if installed as root:
+  -- local global_ts = '/usr/local/lib/node_modules/typescript/lib'
+  local found_ts = ''
+  local function check_dir(path)
+    found_ts =  util.path.join(path, 'node_modules', 'typescript', 'lib')
+    if util.path.exists(found_ts) then
+      return path
+    end
+  end
+  if util.search_ancestors(root_dir, check_dir) then
+    return found_ts
+  else
+    return global_ts
+  end
+end
+
+require'lspconfig'.volar.setup{
+  on_new_config = function(new_config, new_root_dir)
+    new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+  end,
+}
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>lD', vim.diagnostic.open_float)
@@ -65,23 +94,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
                        function() vim.lsp.buf.format {async = true} end, opts)
     end
 })
-
-
---Vue
-
---local function on_new_config(new_config, new_root_dir)
---  local function get_typescript_server_path(root_dir)
---    local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
---    return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
---      or ''
---  end
---
---  if
---    new_config.init_options
---    and new_config.init_options.typescript
---    and new_config.init_options.typescript.tsdk == ''
---  then
---    new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
---  end
---end
 

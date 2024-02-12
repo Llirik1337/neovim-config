@@ -15,10 +15,11 @@ require("lazy").setup({
 	{ 'phaazon/hop.nvim' },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim", "s1n7ax/nvim-window-picker"
+			"MunifTanjim/nui.nvim", "s1n7ax/nvim-window-picker",
+            "3rd/image.nvim",
 		}
 	},
 	{
@@ -27,9 +28,15 @@ require("lazy").setup({
 	{
 		'neovim/nvim-lspconfig'
 	},
-	{
-		'joshdick/onedark.vim'
-	},
+	-- {
+	-- 	'joshdick/onedark.vim'
+	-- },
+    {
+         "folke/tokyonight.nvim",
+         lazy = false,
+         priority = 1000,
+         opts = {},
+    },
     {  'hrsh7th/cmp-nvim-lsp' },
     {  'hrsh7th/cmp-buffer' },
     {  'hrsh7th/cmp-path' },
@@ -83,6 +90,13 @@ require("lazy").setup({
     {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
-    }
+    },
+    {
+        "ThePrimeagen/refactoring.nvim",
+         dependencies = {
+           "nvim-lua/plenary.nvim",
+           "nvim-treesitter/nvim-treesitter",
+         }
+    },
 })
 

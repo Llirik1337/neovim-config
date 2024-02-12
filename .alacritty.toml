@@ -1,0 +1,6 @@
+[window]
+resize_increments = true
+
+[font]
+normal = { family = "ComicShannsMono Nerd Font", style = "Regular" }
+size = 18

@@ -50,3 +50,5 @@ vim.opt.fillchars = {
     foldclose = "▸"
 }
 
+vim.opt.spelllang = 'en,ru'
+vim.opt.spell = true

@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ 'phaazon/hop.nvim' },
+	{   'phaazon/hop.nvim' },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -77,15 +77,15 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim"
         },
     },
-    {'akinsho/toggleterm.nvim', version = "*", config = true},
+    {   'akinsho/toggleterm.nvim', version = "*", config = true},
     { 
-      "nvim-neotest/neotest",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        'nvim-neotest/neotest-jest',
-        "antoinemadec/FixCursorHold.nvim",
-        "nvim-treesitter/nvim-treesitter"
-      }
+        "nvim-neotest/neotest",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          'nvim-neotest/neotest-jest',
+          "antoinemadec/FixCursorHold.nvim",
+          "nvim-treesitter/nvim-treesitter"
+        }
     },
     {
         'phaazon/hop.nvim',
@@ -98,5 +98,34 @@ require("lazy").setup({
            "nvim-treesitter/nvim-treesitter",
          }
     },
+    {   'hrsh7th/cmp-nvim-lsp-signature-help'   },
+    {
+        'linrongbin16/lsp-progress.nvim',
+    },
+    {   'hrsh7th/vim-vsnip'   },
+    {   'hrsh7th/vim-vsnip-integ'   },
+    {   'petertriho/cmp-git', dependencies = {'nvim-lua/plenary.nvim'}	},
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    {   "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    {   "ahmedkhalf/project.nvim"   },
+    {   'saecki/crates.nvim',
+        luasniptag = 'stable'
+    },
+    -- {
+    --     "L3MON4D3/LuaSnip",
+    --     version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    --     build = "make install_jsregexp",
+    --     dependencies = { "rafamadriz/friendly-snippets" },
+    -- },
+    -- {   'hrsh7th/cmp-vsnip'   },
+    -- {   'hrsh7th/cmp-vsnip-integ'   },
+    -- { 'L3MON4D3/LuaSnip' },
+    -- { 'SirVer/ultisnips' },
+    -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
 })
 

@@ -22,22 +22,23 @@
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                fallback()
-            end
-        end, {"i", "s"}),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                fallback()
-            end
-        end, {"i", "s"})
+          if cmp.visible() then
+              cmp.select_next_item()
+          else
+              fallback()
+          end
+      end, {"i", "s"}),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+              cmp.select_prev_item()
+          else
+              fallback()
+          end
+      end, {"i", "s"}),
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
       { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
@@ -50,7 +51,7 @@
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
-      { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+      { name = 'cmp_git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
     }, {
       { name = 'buffer' },
     })
@@ -74,5 +75,5 @@
     })
   })
 
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- require('lspconfig')['tsserver'].setup {capabilities = capabilities}
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig')['tsserver'].setup {capabilities = capabilities}

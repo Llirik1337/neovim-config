@@ -2,7 +2,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- Sntup language servers.
+-- Setup language servers.
 local lspconfig = require('lspconfig')
 local lspconfig_configs = require'lspconfig.configs'
 local lspconfig_util = require 'lspconfig.util'
@@ -86,10 +86,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- vim.keymap.set('n', '<Leader>sl', function()
         --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         -- end, opts)
-        -- vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
         vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.rename, opts)
         vim.keymap.set({'n', 'v'}, '<Leader>la', vim.lsp.buf.code_action, opts)
-        -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<Leader>lf',
                        function() vim.lsp.buf.format {async = true} end, opts)
     end

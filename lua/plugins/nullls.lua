@@ -12,8 +12,8 @@ null_ls.setup({
                 "lua",
                 "python",
                 "typescript",
-                "rust",
-                "vue"
+                -- "rust",
+                -- "vue"
             }
         },
         null_ls.builtins.formatting.eslint_d.with { filetypes = {
@@ -30,18 +30,22 @@ null_ls.setup({
         null_ls.builtins.diagnostics.ltrs,
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.prettierd.with { filetypes = {
-             "css",
-             "scss",
-             "less",
-             "html",
-             "json",
-             "jsonc",
-             "vue",
-             "yaml",
-             "markdown",
-             "markdown.mdx",
-             "graphql",
-             "handlebars",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "css",
+            "scss",
+            "less",
+            "html",
+            "json",
+            "jsonc",
+            "yaml",
+            "markdown",
+            "markdown.mdx",
+            "graphql",
+            "handlebars"
         },
     }
     },

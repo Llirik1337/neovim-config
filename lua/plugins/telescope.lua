@@ -13,10 +13,12 @@ vim.keymap.set('n', 'gr', builtin.lsp_references,
 vim.keymap.set('n', 'gd', builtin.lsp_definitions,
                {noremap = true, silent = true})
 
-require('telescope').setup{ 
+require('telescope').setup { 
   pickers = {
     find_files = {
       theme = "dropdown",
-  },
+    },
   }
 }
+
+require('telescope').load_extension('projects')

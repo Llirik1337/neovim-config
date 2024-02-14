@@ -116,16 +116,5 @@ require("lazy").setup({
     {   'saecki/crates.nvim',
         luasniptag = 'stable'
     },
-    -- {
-    --     "L3MON4D3/LuaSnip",
-    --     version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    --     build = "make install_jsregexp",
-    --     dependencies = { "rafamadriz/friendly-snippets" },
-    -- },
-    -- {   'hrsh7th/cmp-vsnip'   },
-    -- {   'hrsh7th/cmp-vsnip-integ'   },
-    -- { 'L3MON4D3/LuaSnip' },
-    -- { 'SirVer/ultisnips' },
-    -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
 })
 

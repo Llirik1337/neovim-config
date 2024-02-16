@@ -4,61 +4,38 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-local lspconfig_configs = require'lspconfig.configs'
-local lspconfig_util = require 'lspconfig.util'
 
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-}
+lspconfig.jsonls.setup {capabilities = capabilities}
 lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {
-    capabilities = capabilities
-}
+lspconfig.tsserver.setup {capabilities = capabilities}
 lspconfig.prismals.setup {}
-lspconfig.cssls.setup {
-    capabilities = capabilities
-}
+lspconfig.cssls.setup {capabilities = capabilities}
 lspconfig.golangci_lint_ls.setup {}
 lspconfig.rust_analyzer.setup {
-  settings = {
-    ['rust-analyzer'] = {
-            diagnostics = {
-                enable = true,
-                experimental = {
-                    enable = true,
-                },
-            },
-    },
-  },
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {enable = true, experimental = {enable = true}}
+        }
+    }
 }
 
-lspconfig.docker_compose_language_service.setup{}
-lspconfig.dockerls.setup{}
-local function get_typescript_server_path(root_dir)
+lspconfig.lua_ls.setup {}
+lspconfig.docker_compose_language_service.setup {}
+lspconfig.dockerls.setup {}
 
-  -- local global_ts = '/home/llirik1337/.npm/lib/node_modules/typescript/lib'
-  local global_ts = '/home/llirik1337/.nvm/versions/node/v18.18.2/lib/node_modules/npm'
-  -- Alternative location if installed as root:
-  -- local global_ts = '/usr/local/lib/node_modules/typescript/lib'
-  local found_ts = ''
-  local function check_dir(path)
-    found_ts =  util.path.join(path, 'node_modules', 'typescript', 'lib')
-    if util.path.exists(found_ts) then
-      return path
-    end
-  end
-  if util.search_ancestors(root_dir, check_dir) then
-    return found_ts
-  else
-    return global_ts
-  end
-end
+-- capabilities.textDocument.foldingRange = {
+--     dynamicRegistration = false,
+--     lineFoldingOnly = true
+-- }
+-- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+-- for _, ls in ipairs(language_servers) do
+--     require('lspconfig')[ls].setup({
+--         capabilities = capabilities
+--         -- you can add other fields for setting up lsp server in this table
+--     })
+-- end
 
-require'lspconfig'.volar.setup{
-  on_new_config = function(new_config, new_root_dir)
-    new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
-  end,
-}
+require'lspconfig'.volar.setup {}
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>lD', vim.diagnostic.open_float)
@@ -94,4 +71,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
                        function() vim.lsp.buf.format {async = true} end, opts)
     end
 })
-

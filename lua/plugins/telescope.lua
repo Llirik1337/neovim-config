@@ -16,18 +16,14 @@ vim.keymap.set('n', 'gr', builtin.lsp_references,
 vim.keymap.set('n', 'gd', builtin.lsp_definitions,
                {noremap = true, silent = true})
 
-require('telescope').setup { 
-  defaults = {
-    mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
-      n = { ["<c-t>"] = trouble.open_with_trouble },
+require('telescope').setup {
+    defaults = {
+        mappings = {
+            i = {["<c-t>"] = trouble.open_with_trouble},
+            n = {["<c-t>"] = trouble.open_with_trouble}
+        }
     },
-  },
-  pickers = {
-    find_files = {
-      theme = "dropdown",
-    },
-  }
+    pickers = {find_files = {theme = "dropdown"}}
 }
 
 require('telescope').load_extension('projects')
@@ -35,7 +31,7 @@ require("telescope").load_extension("lazygit")
 
 vim.api.nvim_create_autocmd({"BufEnter"}, {
     pattern = "*",
-    callback = function() lazygit_utils.project_root_dir() end,
+    callback = function() lazygit_utils.project_root_dir() end
 })
 
-vim.keymap.set('n',"<leader>lg", telescope.extensions.lazygit.lazygit , {})
+vim.keymap.set('n', "<leader>lg", telescope.extensions.lazygit.lazygit, {})
